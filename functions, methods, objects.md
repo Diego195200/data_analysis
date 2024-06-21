@@ -1,7 +1,8 @@
 # Questions didn't answer yet
 
 1. What is the best when using pandas, key-word argument or positional?
-
+2. I don't know what is the correct name in the Series method: product or prod
+3. View all functionalities of `describe()` method
 
 # FAQ
 
@@ -16,6 +17,7 @@
 
 * We can't use sets to create Series. If we have sets, we have to convert to another type, like a list
 * Numpy is a dependency of Pandas. Some objects are built into Numpy objects
+* Most mathematical methods ignore missing values by default. We can pass an argument False to the `skipna` parameter for the inclusion of nan values
 * 
 
 # General Functions
@@ -59,7 +61,19 @@ These are known as the "accessors" and the "mutators"
 | [str.replace()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.replace.html) |  [index](https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html)  |
 | [astype()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.astype.html)           |                                      dtype                                       |
 | [mean()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)               |                                       size                                       |
-| count()                                                                                                    |                                      shape                                       |
+| [count()](https://pandas.pydata.org/docs/reference/api/pandas.Series.count.html)                           |                                      shape                                       |
 | sort_values()                                                                                              |                                    is_unique                                     |
-|                                                                                                            |                             is_monotonic_decreasing                              |
-|                                                                                                            |                             is_monotonic_increasing                              |
+| [head()](https://pandas.pydata.org/docs/reference/api/pandas.Series.head.html)                             |                             is_monotonic_decreasing                              |
+| [tail()](https://pandas.pydata.org/docs/reference/api/pandas.Series.tail.html)                             |                             is_monotonic_increasing                              |
+| [sum()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sum.html)                               |                                                                                  |
+| prod()                                                                                                     |                                                                                  |
+| [cumsum()](https://pandas.pydata.org/docs/reference/api/pandas.Series.cumsum.html)                         |                                                                                  |
+| [pct_change()](https://pandas.pydata.org/docs/reference/api/pandas.Series.pct_change.html)                 |                                                                                  |
+| [median()](https://pandas.pydata.org/docs/reference/api/pandas.Series.median.html)                         |                                                                                  |
+| [std()](https://pandas.pydata.org/docs/reference/api/pandas.Series.std.html)                               |                                                                                  |
+| [max()](https://pandas.pydata.org/docs/reference/api/pandas.Series.max.html)                               |                                                                                  |
+| min()                                                                                                      |                                                                                  |
+| [describe()](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html)                     |                                                                                  |
+| [sample()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sample.html)                         |                                                                                  |
+| [unique()](https://pandas.pydata.org/docs/reference/api/pandas.Series.unique.html)                                                                                                   |                                                                                  |
+| [nunique()](https://pandas.pydata.org/docs/reference/api/pandas.Series.nunique.html)                                                                                                  |                                                                                  |

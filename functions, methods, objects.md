@@ -11,10 +11,16 @@
    float64,
    int64 and so on indicate that each floating-point/integer value in a pandas object occupies 64 bits
    (8 bytes) of the RAM
-3. 
+
+# Concepts
+1. A function is a *first-class* object in Python, which means that the language treats it like
+any other data type. A function may feel like a more abstract entity, but it’s as valid a
+data structure as any other.
+
 
 # Useful information
 
+* this: `print` is a function, this: `print()` is the **invocation** of the function
 * We can't use sets to create Series. If we have sets, we have to convert to another type, like a list
 * Numpy is a dependency of Pandas. Some objects are built into Numpy objects
 * Most mathematical methods ignore missing values by default. We can pass an argument False to the `skipna` parameter for the inclusion of nan values
@@ -30,6 +36,14 @@
 * `sort_values()` parameters more useful: `ascending`, `na_position`
 * Use `dropna()` method to remove nan values. **No valid for drop nan in index**
 * It is possible so sort values or sort the index with `sort_values()` or `sort_index()` respectively
+* `nlargest()` method returns the five largest values from a Series. **Only works with numbers**
+* `nsmallest()` method returns the five smallest values from a Series. **Only works with numbers**
+* The `inplace` parameter of some methods **modify the original object**  when is set to True
+* The `inplace` parameter of some methods **return a copy**  when is set to False
+* The `inplace` parameter is not recommended
+* `value_counts()` counts the number of occurrences of values in a Series. Return a new Series where the index are the values of the original series
+* To identify trends in numeric data sets, it can be more beneficial to group values into predefined intervals rather than count distinct values.
+* The `bins` parameter of `value_counts()` group the values in half-open intervals. It accepts the intervals as a list, or a int of how bins we want
 
 
 # General Functions
@@ -117,3 +131,17 @@ These are known as the "accessors" and the "mutators"
 | [ne()](https://pandas.pydata.org/docs/reference/api/pandas.Series.ne.html)                                 |                                                                                  |
 | [dropna()](https://pandas.pydata.org/docs/reference/api/pandas.Series.dropna.html)                         |                                                                                  |
 | [sort_index()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_index.html)                 |                                                                                  |
+| [nlargest()](https://pandas.pydata.org/docs/reference/api/pandas.Series.nlargest.html)                     |                                                                                  |
+| [nsmallest()](https://pandas.pydata.org/docs/reference/api/pandas.Series.nsmallest.html)                   |                                                                                  |
+| [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)             |                                                                                  |
+| [round()](https://pandas.pydata.org/docs/reference/api/pandas.Series.round.html)                           |                                                                                  |
+| [apply()](https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html)                                                                                                    |                                                                                  |
+
+
+
+# Index
+
+| Method                                                                                        | Attribute |
+|-----------------------------------------------------------------------------------------------|-----------|
+| [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Index.value_counts.html) |           |
+|                                                                                               |           |

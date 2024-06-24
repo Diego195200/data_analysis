@@ -23,11 +23,26 @@
 * Series values are stored in a numpy ndarray under the hood
 * Broadcasting: 
 * We can a Series to any Python's built-in function
+* We can change from data frame to a Series simply with have one column setting an index
+* `read_csv` function has a parameter `parse_dates` that changes the date string to type Date
+* `read_csv` function has a parameter `usecols` where we specify what columns import
+* We can sort a Series by its values or its index, in ascending or descending order
+* `sort_values()` parameters more useful: `ascending`, `na_position`
+* Use `dropna()` method to remove nan values. **No valid for drop nan in index**
+* It is possible so sort values or sort the index with `sort_values()` or `sort_index()` respectively
+
 
 # General Functions
 
 * read_csv() -> DataFrame
 * `class` `constructor` [Series()](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) -> Series
+
+
+# Types of values
+
+* Object: 
+* NaN: Not a Number
+* NaT: Not a Time
 
 # Syntax and notation
 
@@ -58,14 +73,14 @@ These are known as the "accessors" and the "mutators"
 
 # DataFrame
 
-| methods        | attributes |
-|:---------------|:----------:|
-| head()         |   shape    |
-| tails()        |    size    |
-| sort_values()  |   dtypes   |
-| sort_index()   |   iloc[]   |
-| value_counts() |   loc[]    |
-|                |   index    |
+| methods                                                                                 | attributes |
+|:----------------------------------------------------------------------------------------|:----------:|
+| head()                                                                                  |   shape    |
+| tails()                                                                                 |    size    |
+| sort_values()                                                                           |   dtypes   |
+| sort_index()                                                                            |   iloc[]   |
+| value_counts()                                                                          |   loc[]    |
+| [squeeze()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.squeeze.html) |   index    |
 
 
 # Series
@@ -77,7 +92,7 @@ These are known as the "accessors" and the "mutators"
 | [astype()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.astype.html)           |                                      dtype                                       |
 | [mean()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)               |                                       size                                       |
 | [count()](https://pandas.pydata.org/docs/reference/api/pandas.Series.count.html)                           |                                      shape                                       |
-| sort_values()                                                                                              |                                    is_unique                                     |
+| [sort_values()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html)               |                                    is_unique                                     |
 | [head()](https://pandas.pydata.org/docs/reference/api/pandas.Series.head.html)                             |                             is_monotonic_decreasing                              |
 | [tail()](https://pandas.pydata.org/docs/reference/api/pandas.Series.tail.html)                             |                             is_monotonic_increasing                              |
 | [sum()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sum.html)                               |                                                                                  |
@@ -100,4 +115,5 @@ These are known as the "accessors" and the "mutators"
 | [mod()](https://pandas.pydata.org/docs/reference/api/pandas.Series.mod.html)                               |                                                                                  |
 | [eq()](https://pandas.pydata.org/docs/reference/api/pandas.Series.eq.html)                                 |                                                                                  |
 | [ne()](https://pandas.pydata.org/docs/reference/api/pandas.Series.ne.html)                                 |                                                                                  |
-|                                                                                                            |                                                                                  |
+| [dropna()](https://pandas.pydata.org/docs/reference/api/pandas.Series.dropna.html)                         |                                                                                  |
+| [sort_index()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_index.html)                 |                                                                                  |

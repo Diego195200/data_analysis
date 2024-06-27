@@ -4,6 +4,12 @@
 2. I don't know what is the correct name in the Series method: product or prod
 3. View all functionalities of `describe()` method
 
+
+# Modules, Libraries
+
+1. datetime
+2.
+
 # FAQ
 
 1. [Why is the dtype of string Object?](https://stackoverflow.com/questions/21018654/strings-in-a-dataframe-but-dtype-is-object)
@@ -44,12 +50,19 @@ data structure as any other.
 * `value_counts()` counts the number of occurrences of values in a Series. Return a new Series where the index are the values of the original series
 * To identify trends in numeric data sets, it can be more beneficial to group values into predefined intervals rather than count distinct values.
 * The `bins` parameter of `value_counts()` group the values in half-open intervals. It accepts the intervals as a list, or a int of how bins we want
-
+* When working with dates, use `datetime` module; `strftime('%')`, `date`, `datetime`
+* When using dictionary to feed the data, the keys will be the column name and the values the column values
+* Transpose is swap colum headers with the index labels in a DataFrame with the `T` or `transpose()`method
+* We can set a customize index label With the `index` parameter of `DataFrame` constructor we pass an iterable to change the index labels, they have to match the same number of rows
+* We can modify the column names with the `columns` parameter of `DataFrame` constructor, we pass an iterable to change the names, they have to match the same number of columns
+* All dataframe methods, works on the axis 0, the rows
+* We can set an index column from `read_csv()` function or with the `set_index()` method
 
 # General Functions
 
 * read_csv() -> DataFrame
 * `class` `constructor` [Series()](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) -> Series
+* `class` `constructor` [DataFrame()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) -> DataFrame
 
 
 # Types of values
@@ -72,6 +85,9 @@ and it will be applied for each element of the object
 like the following example: `object.index.str.lower()`
 These are known as the "accessors" and the "mutators"
 
+We can extract a single column from a dataframe with `df.name` or `df['name']` and returns a Series with the respectively key
+**it is recommend to use `df[`name`]` because `df.name` does not recognize spaces as `~~df.my name~~`
+
 
 # Built in functions, operators
 
@@ -87,14 +103,29 @@ These are known as the "accessors" and the "mutators"
 
 # DataFrame
 
-| methods                                                                                 | attributes |
-|:----------------------------------------------------------------------------------------|:----------:|
-| head()                                                                                  |   shape    |
-| tails()                                                                                 |    size    |
-| sort_values()                                                                           |   dtypes   |
-| sort_index()                                                                            |   iloc[]   |
-| value_counts()                                                                          |   loc[]    |
-| [squeeze()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.squeeze.html) |   index    |
+| methods                                                                                     |                                      attributes                                       |
+|:--------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------:|
+| head()                                                                                      |   [shape](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
+| tails()                                                                                     |    [size](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)    |
+| sort_values()                                                                               |                                      dtype**s**                                       |
+| sort_index()                                                                                |                                        iloc[]                                         |
+| value_counts()                                                                              |                                         loc[]                                         |
+| [squeeze()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.squeeze.html)     |   [index](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.index.html)   |
+| [transpose()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.transpose.html) |       [T](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.T.html)       |
+| [count()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)          | [columns](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html) |
+| [sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html)       |    [ndim](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
+| [nunique()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html)     |                                                                                       |
+| [max()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html)             |                                                                                       |
+| [min()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html)             |                                                                                       |
+| [nlargest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html)   |                                                                                       |
+| [nsmallest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nsmallest.html) |                                                                                       |
+| [sum()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html)             |                                                                                       |
+| [mean()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html)           |                                                                                       |
+| [median()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html)       |                                                                                       |
+| [mode()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mode.html)           |                                                                                       |
+| std()                                                                                       |                                                                                       |
+| var()                                                                                       |                                                                                       |
+| [set_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html) |                                                                                       |
 
 
 # Series
@@ -135,7 +166,7 @@ These are known as the "accessors" and the "mutators"
 | [nsmallest()](https://pandas.pydata.org/docs/reference/api/pandas.Series.nsmallest.html)                   |                                                                                  |
 | [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)             |                                                                                  |
 | [round()](https://pandas.pydata.org/docs/reference/api/pandas.Series.round.html)                           |                                                                                  |
-| [apply()](https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html)                                                                                                    |                                                                                  |
+| [apply()](https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html)                           |                                                                                  |
 
 
 

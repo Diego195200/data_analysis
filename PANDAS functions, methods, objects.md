@@ -62,10 +62,15 @@ data structure as any other.
 * We can change the column names with the `df.columns=list` OR with the `rename()` method using the `columns` parameter
 Or also we can change the index label using the `index` parameter
 * The loc attribute extracts rows or columns by index label
-* Whenever importing a data set, it’s important to consider whether each column stores
+* about reducing memory: Whenever importing a data set, it’s important to consider whether each column stores
 its data in the most optimal type. The “best” data type is the one that consumes the
 least memory or provides the most utility
-* 
+* With the following syntax we compare each value of a Series with the other value
+`Series == value` -> Series of booleans
+* The `how="all"` parameter in the `dropna()` method only removes the row if ALL values of that row are NaN
+* The `subset` parameter in `dropna()` method just looks for NaN in the column 
+* The `thresold` parameter in `dropna()` method just specify for a minimum of missing values for remove the row
+*
 
 # General Functions
 
@@ -79,6 +84,10 @@ least memory or provides the most utility
 * Object: 
 * NaN: Not a Number
 * NaT: Not a Time
+* int64
+* float64
+* category: ideal for a column consisting of a small number of unique values relative to its total size like gender,
+blood type, weekdays, planets, and income groups, for example. We use `"category"` in code
 
 # Syntax and notation
 
@@ -87,7 +96,11 @@ criteria = DataFrame['name'] == 'row_value'
 DataFrame[criteria]  # -> Series (if just one name), DF with more than one name
 ```
 
-Here we use `&`, `|` for logic operations
+Here we use `&`, `|`, `~` for logic operations
+
+`~` is an inverser, so True becomes False
+
+![Alt text](/home/diego/Documents/practicing_data_analysis/Pandas in action book/img/boolmeth.png)
 
 We can apply a specific core python method to pandas' objects, 
 and it will be applied for each element of the object
@@ -98,6 +111,8 @@ We can extract a single column from a dataframe with `df.name` or `df['name']` a
 **it is recommended to use `df[`name`]` because `df.name` does not recognize spaces as `~~df.my name~~`**
 
 With `df[['columname1', 'columname2']]` we can extract more than one column from a df
+
+To extract rows that meet some criteria we can do `df[[list of bools]]` where list of bools must be the same number of rows
 
 
 # Built in functions, operators
@@ -140,13 +155,19 @@ With `df[['columname1', 'columname2']]` we can extract more than one column from
 | [reset_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html)     |                                                                                       |
 | [select_dtypes()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html) |                                                                                       |
 | [rename()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html)               |                                                                                       |
+| [info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html)                   |                                                                                       |
+| [astype()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html)               |                                                                                       |
+| [isin()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)                   |                                                                                       |
+| dropna()                                                                                            |                                                                                       |
+| [duplicated()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)       |                                                                                       |
+| drop_duplicates()                                                                                   |                                                                                       |
 
 
 # Series
 
 | methods                                                                                                    |                                    attributes                                    |
 |:-----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------:|
-| between()                                                                                                  | [values](https://pandas.pydata.org/docs/reference/api/pandas.Series.values.html) |
+| [between()](https://pandas.pydata.org/docs/reference/api/pandas.Series.between.html)                       | [values](https://pandas.pydata.org/docs/reference/api/pandas.Series.values.html) |
 | [str.replace()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.replace.html) |  [index](https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html)  |
 | [astype()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.astype.html)           |                                      dtype                                       |
 | [mean()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)               |                                       size                                       |
@@ -181,6 +202,8 @@ With `df[['columname1', 'columname2']]` we can extract more than one column from
 | [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)             |                                                                                  |
 | [round()](https://pandas.pydata.org/docs/reference/api/pandas.Series.round.html)                           |                                                                                  |
 | [apply()](https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html)                           |                                                                                  |
+| [isnull()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isnull.html)                      |                                                                                  |
+| notnull()                                                                                                  |                                                                                  |
 
 
 

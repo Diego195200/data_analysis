@@ -26,6 +26,9 @@ data structure as any other.
 
 # Useful information
 
+* How can we know all different values a column can contain? With the `unique()` method
+* The process of cleaning data is called wrangling or munging
+* The accessor for the string methods on values of a DF is `str`; `df.Column.str`
 * this: `print` is a function, this: `print()` is the **invocation** of the function
 * We can't use sets to create Series. If we have sets, we have to convert to another type, like a list
 * Numpy is a dependency of Pandas. Some objects are built into Numpy objects
@@ -70,7 +73,10 @@ least memory or provides the most utility
 * The `how="all"` parameter in the `dropna()` method only removes the row if ALL values of that row are NaN
 * The `subset` parameter in `dropna()` method just looks for NaN in the column 
 * The `thresold` parameter in `dropna()` method just specify for a minimum of missing values for remove the row
-*
+* The category data type is ideal when a Series has a small number of unique values.
+* Helper methods such as `isnull`, `notnull`, `between`, and `duplicated` return boolean Series that we can use to filter data sets.
+* The `fillna` method replaces NaNs with a constant value.
+* The `dropna` method removes rows with null values. We can customize its arguments to target missing values in all or some columns.
 
 # General Functions
 
@@ -117,13 +123,21 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 
 # Built in functions, operators
 
-| Built-in | operators |
-|----------|-----------|
-| len()    | in        |
-| type()   |           |
-| dir()    |           |
-| list()   |           |
-| dict()   |           |
+| Built-in     | operators |
+|--------------|-----------|
+| len()        | in        |
+| type()       | for       |
+| dir()        |           |
+| list()       |           |
+| dict()       |           |
+| strip()      |           |
+| lstrip()     |           |
+| rstrip()     |           |
+| lower()      |           |
+| upper()      |           |
+| title()      |           |
+| capitalize() |           |
+|              |           |
 
 
 
@@ -161,6 +175,7 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 | dropna()                                                                                            |                                                                                       |
 | [duplicated()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)       |                                                                                       |
 | drop_duplicates()                                                                                   |                                                                                       |
+| replace()                                                                                           |                                                                                       |
 
 
 # Series

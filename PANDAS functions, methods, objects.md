@@ -8,7 +8,7 @@
 # Modules, Libraries
 
 1. datetime
-2.
+2. 
 
 # FAQ
 
@@ -22,10 +22,14 @@
 1. A function is a *first-class* object in Python, which means that the language treats it like
 any other data type. A function may feel like a more abstract entity, but it’s as valid a
 data structure as any other.
-
+2. A regular expression is a search pattern that looks for a sequence of characters within a string
+3. A MultiIndex is an index object that holds multiple levels.
+4. A class method is a method we invoke on a class rather than an instance.
 
 # Useful information
 
+* Pandas Series has one dimension, DataFrames two dimensions, but actually it is possible to work in more dimensions with the `MultiIndex`
+* Delete a column with `df.drop(columns='columname')` or with `del df['columname']`
 * How can we know all different values a column can contain? With the `unique()` method
 * The process of cleaning data is called wrangling or munging
 * The accessor for the string methods on values of a DF is `str`; `df.Column.str`
@@ -77,6 +81,7 @@ least memory or provides the most utility
 * Helper methods such as `isnull`, `notnull`, `between`, and `duplicated` return boolean Series that we can use to filter data sets.
 * The `fillna` method replaces NaNs with a constant value.
 * The `dropna` method removes rows with null values. We can customize its arguments to target missing values in all or some columns.
+* 
 
 # General Functions
 
@@ -127,7 +132,7 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 |--------------|-----------|
 | len()        | in        |
 | type()       | for       |
-| dir()        |           |
+| dir()        | []        |
 | list()       |           |
 | dict()       |           |
 | strip()      |           |
@@ -137,7 +142,8 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 | upper()      |           |
 | title()      |           |
 | capitalize() |           |
-|              |           |
+| slice()      |           |
+| replace      |           |
 
 
 
@@ -176,6 +182,7 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 | [duplicated()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)       |                                                                                       |
 | drop_duplicates()                                                                                   |                                                                                       |
 | replace()                                                                                           |                                                                                       |
+| [drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)                   |                                                                                       |
 
 
 # Series
@@ -219,6 +226,11 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 | [apply()](https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html)                           |                                                                                  |
 | [isnull()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isnull.html)                      |                                                                                  |
 | notnull()                                                                                                  |                                                                                  |
+| [str.contains()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html)             |                                                                                  |
+| str.len()                                                                                                  |                                                                                  |
+| [str.split()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html)                   |                                                                                  |
+| [str.get()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get.html)                       |                                                                                  |
+| [str.replace()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html)               |                                                                                  |
 
 
 
@@ -228,3 +240,10 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 |-----------------------------------------------------------------------------------------------|-----------|
 | [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Index.value_counts.html) |           |
 |                                                                                               |           |
+
+
+# MultiIndex
+
+| Method                                                                                           | Attribute |
+|--------------------------------------------------------------------------------------------------|-----------|
+| [from_tuples()](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.from_tuples.html) |           |

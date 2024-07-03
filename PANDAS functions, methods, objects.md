@@ -3,6 +3,15 @@
 1. What is the best when using pandas, key-word argument or positional?
 2. I don't know what is the correct name in the Series method: product or prod
 3. View all functionalities of `describe()` method
+4. use of loc[]
+5. STUDY MORE ABOUT MULTIINDEX
+
+
+# Data Analysis process
+
+1. The process of cleaning data is called **wrangling or munging**
+2. Reshaping
+3. 
 
 
 # Modules, Libraries
@@ -28,7 +37,27 @@ data structure as any other.
 
 # Useful information
 
+* it’s optimal to sort our index before we look up any row
+* A MultiIndex is an index made of multiple levels.
+* A MultiIndex uses tuples of values to store its labels.
+* A DataFrame can store a MultiIndex on both its row and column axis.
+* The sort_index method sorts MultiIndex levels. Pandas can sort index levels individually or as a group.
+* The label-based loc and the position-based iloc accessors require additional arguments to extract the proper combination of rows and columns.
+* Pass tuples to the loc and iloc accessors to avoid ambiguity.
+* The reset_index method integrates index levels as DataFrame columns.
+* Pass the set_index method a list of columns to build a MultiIndex from existing DataFrame columns.
+* The order matters when setting a multiindex, first must be the categorical data with less values
+* Columns with a small number of unique items usually represent categorical data and are good candidates for index levels
+* The xs method allows us to extract rows by providing a value for one MultiIndex level
+* The form `df['name2':'name2']` just is valid, and it extract multiples rows. **it is not valid `df['name']` for this use `df.loc['name']` 
+* When should use in multiIndex`df['outer category']` to extract the level 0, if we can't extract at once the level 2
+* The `loc[]` accessor extracts by index label, and the `iloc[]` accessor extracts by index position.
+* Indices can hold various data types: strings, numbers, datetimes, and more
+* The pandas documentation recommends the following indexing strategy to avoid uncertainty. Use the first argument to loc for row index labels and the second argument for column index labels.
+* pandas distinguishes between list and tuple arguments to accessors. Use a list to store multiple keys. Use a tuple to store the components of one multilevel key
+* A good way to start thinking about the MultiIndex object as an index in which each label can store multiple pieces of data.
 * Pandas Series has one dimension, DataFrames two dimensions, but actually it is possible to work in more dimensions with the `MultiIndex`
+* In pandas terminology, the collection of tuple values at the same position forms a level of the MultiIndex.
 * Delete a column with `df.drop(columns='columname')` or with `del df['columname']`
 * How can we know all different values a column can contain? With the `unique()` method
 * The process of cleaning data is called wrangling or munging
@@ -149,40 +178,42 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 
 # DataFrame
 
-| methods                                                                                             |                                      attributes                                       |
-|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------:|
-| head()                                                                                              |   [shape](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
-| tails()                                                                                             |    [size](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)    |
-| sort_values()                                                                                       |                                      dtype**s**                                       |
-| sort_index()                                                                                        |   [iloc[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html)   |
-| value_counts()                                                                                      |    [loc[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html)    |
-| [squeeze()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.squeeze.html)             |   [index](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.index.html)   |
-| [transpose()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.transpose.html)         |       [T](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.T.html)       |
-| [count()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)                  | [columns](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html) |
-| [sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html)               |    [ndim](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
-| [nunique()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html)             |     [at[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.at.html)     |
-| [max()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html)                     |    [iat[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iat.html)    |
-| [min()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html)                     |                                                                                       |
-| [nlargest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html)           |                                                                                       |
-| [nsmallest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nsmallest.html)         |                                                                                       |
-| [sum()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html)                     |                                                                                       |
-| [mean()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html)                   |                                                                                       |
-| [median()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html)               |                                                                                       |
-| [mode()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mode.html)                   |                                                                                       |
-| std()                                                                                               |                                                                                       |
-| var()                                                                                               |                                                                                       |
-| [set_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html)         |                                                                                       |
-| [reset_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html)     |                                                                                       |
-| [select_dtypes()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html) |                                                                                       |
-| [rename()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html)               |                                                                                       |
-| [info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html)                   |                                                                                       |
-| [astype()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html)               |                                                                                       |
-| [isin()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)                   |                                                                                       |
-| dropna()                                                                                            |                                                                                       |
-| [duplicated()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)       |                                                                                       |
-| drop_duplicates()                                                                                   |                                                                                       |
-| replace()                                                                                           |                                                                                       |
-| [drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)                   |                                                                                       |
+| methods                                                                                                             |                                      attributes                                       |
+|:--------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------:|
+| head()                                                                                                              |   [shape](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
+| tails()                                                                                                             |    [size](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)    |
+| sort_values()                                                                                                       |                                      dtype**s**                                       |
+| sort_index()                                                                                                        |   [iloc[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html)   |
+| value_counts()                                                                                                      |    [loc[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html)    |
+| [squeeze()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.squeeze.html)                             |   [index](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.index.html)   |
+| [transpose()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.transpose.html)                         |       [T](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.T.html)       |
+| [count()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.size.html)                                  | [columns](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.columns.html) |
+| [sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html)                               |    [ndim](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ndim.html)    |
+| [nunique()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html)                             |     [at[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.at.html)     |
+| [max()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html)                                     |    [iat[]](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iat.html)    |
+| [min()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html)                                     |                                                                                       |
+| [nlargest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html)                           |                                                                                       |
+| [nsmallest()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nsmallest.html)                         |                                                                                       |
+| [sum()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html)                                     |                                                                                       |
+| [mean()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html)                                   |                                                                                       |
+| [median()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.median.html)                               |                                                                                       |
+| [mode()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mode.html)                                   |                                                                                       |
+| std()                                                                                                               |                                                                                       |
+| var()                                                                                                               |                                                                                       |
+| [set_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html)                         |                                                                                       |
+| [reset_index()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html)                     |                                                                                       |
+| [select_dtypes()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html)                 |                                                                                       |
+| [rename()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html)                               |                                                                                       |
+| [info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html)                                   |                                                                                       |
+| [astype()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html)                               |                                                                                       |
+| [isin()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html)                                   |                                                                                       |
+| dropna()                                                                                                            |                                                                                       |
+| [duplicated()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)                       |                                                                                       |
+| drop_duplicates()                                                                                                   |                                                                                       |
+| replace()                                                                                                           |                                                                                       |
+| [drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)                                   |                                                                                       |
+| [xs()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.xs.html)                         |                                                                                       |
+| [reorder_levels()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reorder_levels.html) |                                                                                       |
 
 
 # Series
@@ -239,11 +270,13 @@ To extract rows that meet some criteria we can do `df[[list of bools]]` where li
 | Method                                                                                        | Attribute |
 |-----------------------------------------------------------------------------------------------|-----------|
 | [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Index.value_counts.html) |           |
-|                                                                                               |           |
+| get_level_values()                                                                            |           |
 
 
 # MultiIndex
 
-| Method                                                                                           | Attribute |
-|--------------------------------------------------------------------------------------------------|-----------|
-| [from_tuples()](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.from_tuples.html) |           |
+| Method                                                                                                       | Attribute |
+|--------------------------------------------------------------------------------------------------------------|-----------|
+| `classmethod` [from_tuples()](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.from_tuples.html) | index     |
+|                                                                                                              | columns   |
+|                                                                                                              | names     |
